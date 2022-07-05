@@ -5,31 +5,87 @@
         <title>Oculomics-based sarcopenia risk calculator</title>
         <script>
             function cal(){
-                var v1 = document.getElementById("v1").value;
-                var v2 = document.getElementById("v2").value;
-                var op = document.getElementById("op").value;
-                var res;
+                var select_sex = document.querySelector('input[name="id_sex"]:checked').value;
+                var v_sex=0;
+                if (select_sex =='f_male'){v_sex = 1;}
+                else if (select_sex =='f_female') {v_sex = 2;}
 
-                if(op == "+"){
-                    res = v1+v2;
-                }else if(op == "-"){
-                    res = v1-v2;
-                }else if(op == "*"){
-                    res = v1*v2;
-                }else if(op == "/"){
-                    res = v1/v2;
-                }else if(op == "**"){
-                    res = v1**v2;
-                }
-                document.getElementById("res").value = res;
+                var v1 = document.getElementById("f_age").value;
+                var v2 = document.getElementById("f_bmi").value;
+
+                var select_region = document.querySelector('input[name="id_region"]:checked').value;
+                var v_region=0;
+                if (select_region =='HTML'){v_region = 1.0;}
+                else if (select_region =='CSS') {v_region = 2.0;}
+
+                var select_smoker = document.querySelector('input[name="id_smoker"]:checked').value;
+                var v_smoker=0;
+                if (select_smoker =='HTML'){v_smoker = 1.01;}
+                else if (select_smoker =='CSS') {v_smoker = 2.02;} 
+
+                var select_alcohol = document.querySelector('input[name="id_alcohol"]:checked').value;
+                var v_alcohol=0;
+                if (select_alcohol =='HTML'){v_alcohol = 1.1;}
+                else if (select_alcohol =='CSS') {v_alcohol = 2.2;} 
+
+                var select_dm = document.querySelector('input[name="id_dm"]:checked').value;
+                var v_dm=0;
+                if (select_dm =='HTML'){v_dm = 1.01;}
+                else if (select_dm =='CSS') {v_dm = 2.04;} 
+
+                var select_htn = document.querySelector('input[name="id_htn"]:checked').value;
+                var v_htn=0;
+                if (select_htn =='HTML'){v_htn = 1.1;}
+                else if (select_htn =='CSS') {v_htn = 2.2;} 
+
+                var select_ptosis = document.querySelector('input[name="id_ptosis"]:checked').value;
+                var v_ptosis=0;
+                if (select_ptosis =='HTML'){v_ptosis = 1.1;}
+                else if (select_ptosis =='CSS') {v_ptosis = 2.2;} 
+
+                var select_lft = document.querySelector('input[name="id_lft"]:checked').value;
+                var v_lft=0;
+                if (select_lft =='HTML'){v_lft = 1.1;}
+                else if (select_lft =='CSS') {v_lft = 2.2;} 
+
+                var select_pterygiun = document.querySelector('input[name="id_pterygiun"]:checked').value;
+                var v_pterygiun=0;
+                if (select_pterygiun =='HTML'){v_pterygiun = 1.1;}
+                else if (select_pterygiun =='CSS') {v_pterygiun = 2.2;} 
+
+                var select_cat = document.querySelector('input[name="id_cat"]:checked').value;
+                var v_cat=0;
+                if (select_cat =='HTML'){v_cat = 1.1;}
+                else if (select_cat =='CSS') {v_cat = 2.2;} 
+
+                var select_glaucoma = document.querySelector('input[name="id_glaucoma"]:checked').value;
+                var v_glaucoma=0;
+                if (select_glaucoma =='HTML'){v_glaucoma = 1.1;}
+                else if (select_glaucoma =='CSS') {v_glaucoma = 2.2;} 
+
+                var select_amd = document.querySelector('input[name="id_amd"]:checked').value;
+                var v_amd=0;
+                if (select_amd =='HTML'){v_amd = 1.1;}
+                else if (select_amd =='CSS') {v_amd = 2.2;} 
+
+                var select_dmr = document.querySelector('input[name="id_dmr"]:checked').value;
+                var v_dmr=0;
+                if (select_dmr =='HTML'){v_dmr = 1.1;}
+                else if (select_dmr =='CSS') {v_dmr = 2.2;} 
+
+
+                res3 = (Number(v1)+Number(v2))*Number(v_sex)+Number(v_region)+Number(v_dm)+Number(v_htn);
+
+                document.getElementById("res3").value = res3;
             }
 
             function reset(){
                 // 추가된 부분
-                document.getElementById("v1").value = "";
-                document.getElementById("v2").value = "";
-                document.getElementById("op").value = "";
-                document.getElementById("res").value = "";
+                document.getElementById("f_age").value = "";
+                document.getElementById("f_bmi").value = "";
+                document.getElementById("res1").value = "";
+                document.getElementById("res2").value = "";
+                document.getElementById("res3").value = "";
             }
 
             function getGender(event) {
@@ -47,6 +103,20 @@
                 }
                 document.getElementById("a1").value = a1;
             }
+
+
+            function getSex(event) {
+                document.getElementById('id_sex').innerText = event.target.value;
+                var value_sex = document.getElementById('id_sex').innerText;
+                var a1=0;
+                if(value_sex == "f_male"){
+                    a1 = 1;
+                }else if(value_sex == "f_female"){
+                    a1 = 2;
+                }
+                document.getElementById("a01").innerText = a1;
+            }
+
         </script>
     </head>
     <body>
@@ -54,7 +124,7 @@
         style="display:block; margin: 0 auto; width:900px; height:240px;"
         /><br>
         <center>The page for 
-            "Oculomics for sarcopenia: a machine learning approach towards predictive, preventive, and personalized medicine" </center>
+            <strong>"Oculomics for sarcopenia: a machine learning approach towards predictive, preventive, and personalized medicine" </strong></center>
         <center> Authors: 
             Bo Ram Kim, Tae Keun Yoo, Hong Kyu Kim, Ik Hee Ryu, Jin Kuk Kim, In Sik Lee,J ung Soo Kim, Dong-Hyeok Shin, Young-Sang Kim, Bom Taeck Kim</center><br>    
         <br>
@@ -62,19 +132,19 @@
         <center>Sex: 
         <input type="radio" 
         name="id_sex" 
-        value="HTML" 
-        onclick="getValue1(event)">Male
+        value="f_male" 
+        onclick="getSex(event)">Male
         <input type="radio" 
         name="id_sex" 
-        value="CSS" 
-        onclick="getValue1(event)" 
-        checked="checked">Female</center>
+        value="f_female" 
+        onclick="getSex(event)" 
+        checked="checked">Female </center> 
         
         <center>Age: 
-        <input type="text" id="v1"> years old</center> 
+        <input type="text" id="f_age"> years old</center> 
         
         <center>Body Mass Indes (BMI): 
-        <input type="text" id="v2"> kg/m^2 </center>
+        <input type="text" id="f_bmi"> kg/m^2 </center>
 
         <center>Region of residence:
         <input type="radio" 
@@ -130,7 +200,9 @@
         value="CSS" 
         onclick="getValue1(event)" 
         checked="checked"> No </center>
-        
+
+        <br>
+        <center>Eye examinations</center>
         <center>Blepharoptosis:
         <input type="radio" 
         name="id_ptosis" 
@@ -208,19 +280,21 @@
         value="CSS" 
         onclick="getValue1(event)" 
         checked="checked"> No </center>
-        <br>          
+        <br>      
         
-        <center><strong>Results</strong></center>
-        <center>Skeletal muscle index prediction: <id='value1'> </center>
-
-        <center>Sarcopenia index prediction: <id='value1'></center>
-
-        <center>Sarcopenia risk prediction (%): <id='a01'></center> 
+        <center><input type="button" value="Calculation" onclick="cal()">  <input type="button" value="Reset" onclick="reset()"></center>
         <br>
-        <center><input type="button" value="Calculation" onclick="cal()"></center>
-        <center><input type="button" value="Reset" onclick="reset()"></center>
-
-        <center>powered by VISUWORKS Inc.</center> 
+        <div style="border:1px solid; padding:10px;">
+            <center><strong>Results</strong></center>
+            <center>Skeletal muscle index prediction: <input type="text" id="res1"> </center>
+    
+            <center>Sarcopenia index prediction: <input type="text" id="res1"></center>
+    
+            <center>Sarcopenia risk prediction (%): <input type="text" id="res3"></center> 
+        </div>
+        <br>
+            
+        <center>powered by VISUWORKS Inc.</center> <br>
         <img src="./baseimage.JPG";
         style="display:block; margin: 0 auto; width:900px; height:140px;"
         /><br>
