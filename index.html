@@ -72,11 +72,6 @@
         
         <center>Body Mass Indes (BMI): 
         <input type="text" id="v2"> kg/m^2 </center><br>
-        
-        연산자: 
-        <input type="text" id="op"><br>
-        결과: 
-        <input type="text" id="res"><br>
 
         <center>: Region of residence:
         <input type="radio" 
@@ -114,6 +109,120 @@
         checked="checked"> less than 1 drink/week</center>
         <br>
         
+        <center>: Diabete mellitus (DM):
+        <input type="radio" 
+        name="id_dm" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_dm" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+        <br>
+        
+        <center>: Hypertension (HTN):
+        <input type="radio" 
+        name="id_htn" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_htn" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+        <br>
+        
+        <center>: Blepharoptosis:
+        <input type="radio" 
+        name="id_ptosis" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_ptosis" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+        <br>
+       
+        <center>: Decreased levator function:
+        <input type="radio" 
+        name="id_lft" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_lft" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+        <br>
+     
+        <center>: Pterygium:
+        <input type="radio" 
+        name="id_pterygiun" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_pterygiun" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+        <br>
+        
+        <center>: Cataract:
+        <input type="radio" 
+        name="id_cat" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_cat" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+        <br>        
+        
+        <center>: Glaucoma:
+        <input type="radio" 
+        name="id_glaucoma" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_glaucoma" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+        <br>             
+        
+        <center>: Age-related macular degeneration:
+        <input type="radio" 
+        name="id_amd" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_amd" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+        <br>               
+
+        <center>: Diabetic retinopathy:
+        <input type="radio" 
+        name="id_dmr" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_dmr" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+        <br>          
+        
+        연산자: 
+        <input type="text" id="op"><br>
+        결과: 
+        <input type="text" id="res"><br>
+
+        
         <div id='value1'></div>
         <div id='a01'></div>
         <br>
@@ -124,6 +233,13 @@
         <input type="button" value="계산하기" onclick="cal()">
         <input type="button" value="초기화" onclick="reset()">
 
+                
+        연산자: 
+        <input type="text" id="op"><br>
+        결과: 
+        <input type="text" id="res"><br>
+
+        
         <br>
         <input type='radio'
            name='gender' 
