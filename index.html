@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>간단한 계산기</title>
+        <script>
+            function cal(){
+                var v1 = document.getElementById("v1").value;
+                var v2 = document.getElementById("v2").value;
+                var op = document.getElementById("op").value;
+                var res;
+
+                if(op == "+"){
+                    res = v1+v2;
+                }else if(op == "-"){
+                    res = v1-v2;
+                }else if(op == "*"){
+                    res = v1*v2;
+                }else if(op == "/"){
+                    res = v1/v2;
+                }else if(op == "**"){
+                    res = v1**v2;
+                }
+                document.getElementById("res").value = res;
+            }
+
+            function reset(){
+                // 추가된 부분
+                document.getElementById("v1").value = "";
+                document.getElementById("v2").value = "";
+                document.getElementById("op").value = "";
+                document.getElementById("res").value = "";
+            }
+
+            function getGender(event) {
+                document.getElementById('resultss').innerText = event.target.value;
+            }
+
+            function getValue1(event) {
+                document.getElementById('value1').innerText = event.target.value;
+                var value1 = document.getElementById('value1').innerText;
+                var a1=5;
+                if(value1 == "HTML"){
+                    a1 = 1;
+                }else if(value1 == "CSS"){
+                    a1 = 3;
+                }
+                document.getElementById("a1").value = a1;
+            }
+        </script>
+    </head>
+    <body>
+        <img src="headimage.JPG";
+        style="display:block; margin: 0 auto; width:900px; height:240px;"
+        /><br>
+        <center>값1: 
+        <input type="text" id="v1"></center> <br>
+        값2: 
+        <input type="text" id="v2"><br>
+        연산자: 
+        <input type="text" id="op"><br>
+        결과: 
+        <input type="text" id="res"><br>
+        라디오: 
+        <input type="radio" 
+        name="chk_info" 
+        value="HTML" 
+        onclick="getValue1(event)">HTML
+
+        <input type="radio" 
+        name="chk_info" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked">CSS
+        <div id='value1'></div>
+        <div id='a01'></div>
+        <br>
+        버튼 반응: 
+        <input type="text" id="a1"><br>
+
+        <br><br>
+        <input type="button" value="계산하기" onclick="cal()">
+        <input type="button" value="초기화" onclick="reset()">
+
+        <br>
+        <input type='radio'
+           name='gender' 
+           value='female' 
+           onclick='getGender(event)'/>여성
+        <input type='radio' 
+           name='gender' 
+           value='male' 
+           onclick='getGender(event)'/>남성
+        <div id='resultss'></div>
+    
+    
+    </body>
+</html>
