@@ -207,7 +207,7 @@
         value="CSS" 
         onclick="getValue1(event)" 
         checked="checked"> No </center>
-        <br>               
+                  
 
         <center>Diabetic retinopathy:
         <input type="radio" 
@@ -221,21 +221,12 @@
         checked="checked"> No </center>
         <br>          
         
-        <center>Skeletal muscle index prediction: </center>
-        <center><input type="text" id="op"><br></center>
-        <center>Sarcopenia index prediction: </center>
-        <input type="text" id="res"><br>
-        <center>Sarcopenia risk prediction (%): </center>
-        <input type="text" id="res"><br>
+        <center>Skeletal muscle index prediction: <id='value1'> </center>
 
-        
-        <div id='value1'></div>
-        <div id='a01'></div>
+        <center>Sarcopenia index prediction: <id='value1'></center>
+
+        <center>Sarcopenia risk prediction (%): <id='a01'></center> 
         <br>
-        버튼 반응: 
-        <input type="text" id="a1"><br>
-
-        <br><br>
         <center><input type="button" value="Calculation" onclick="cal()"></center>
         <center><input type="button" value="Reset" onclick="reset()"></center>
 
@@ -245,20 +236,9 @@
         결과: 
         <input type="text" id="res"><br>
 
-        
-        <br>
-        <input type='radio'
-           name='gender' 
-           value='female' 
-           onclick='getGender(event)'/>여성
-        <input type='radio' 
-           name='gender' 
-           value='male' 
-           onclick='getGender(event)'/>남성
-        <div id='resultss'></div>
     
         <img src="./baseimage.JPG";
-        style="display:block; margin: 0 auto; width:900px; height:240px;"
+        style="display:block; margin: 0 auto; width:900px; height:140px;"
         /><br>
     </body>
 </html>
