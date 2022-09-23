@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Oculomics-based sarcopenia risk calculator</title>
+        <script>
+            function cal(){
+                var select_sex = document.querySelector('input[name="id_sex"]:checked').value;
+                var v_sex=0;
+                if (select_sex =='f_male'){v_sex = 1;}
+                else if (select_sex =='f_female') {v_sex = 2;}
+
+                var v1 = document.getElementById("f_age").value;
+                var v2 = document.getElementById("f_bmi").value;
+
+                var select_region = document.querySelector('input[name="id_region"]:checked').value;
+                var v_region=0;
+                if (select_region =='rural'){v_region = 2;}
+                else if (select_region =='urban') {v_region = 1;}
+
+                var select_smoker = document.querySelector('input[name="id_smoker"]:checked').value;
+                var v_smoker=0;
+                if (select_smoker =='HTML'){v_smoker = 1;}
+                else if (select_smoker =='CSS') {v_smoker = 0;} 
+
+                var select_alcohol = document.querySelector('input[name="id_alcohol"]:checked').value;
+                var v_alcohol=0;
+                if (select_alcohol =='HTML'){v_alcohol = 1;}
+                else if (select_alcohol =='CSS') {v_alcohol = 0;} 
+
+                var select_dm = document.querySelector('input[name="id_dm"]:checked').value;
+                var v_dm=0;
+                if (select_dm =='HTML'){v_dm = 1;}
+                else if (select_dm =='CSS') {v_dm = 0;} 
+
+                var select_htn = document.querySelector('input[name="id_htn"]:checked').value;
+                var v_htn=0;
+                if (select_htn =='HTML'){v_htn = 1;}
+                else if (select_htn =='CSS') {v_htn = 0;} 
+
+                var select_ptosis = document.querySelector('input[name="id_ptosis"]:checked').value;
+                var v_ptosis=0;
+                if (select_ptosis =='HTML'){v_ptosis = 1;}
+                else if (select_ptosis =='CSS') {v_ptosis = 0;} 
+
+                var select_lft = document.querySelector('input[name="id_lft"]:checked').value;
+                var v_lft=0;
+                if (select_lft =='HTML'){v_lft = 1;}
+                else if (select_lft =='CSS') {v_lft = 0;} 
+
+                var select_pterygiun = document.querySelector('input[name="id_pterygiun"]:checked').value;
+                var v_pterygiun=0;
+                if (select_pterygiun =='HTML'){v_pterygiun = 1;}
+                else if (select_pterygiun =='CSS') {v_pterygiun = 0;} 
+
+                var select_cat = document.querySelector('input[name="id_cat"]:checked').value;
+                var v_cat=0;
+                if (select_cat =='HTML'){v_cat = 1;}
+                else if (select_cat =='CSS') {v_cat = 0;} 
+
+                var select_glaucoma = document.querySelector('input[name="id_glaucoma"]:checked').value;
+                var v_glaucoma=0;
+                if (select_glaucoma =='HTML'){v_glaucoma = 1;}
+                else if (select_glaucoma =='CSS') {v_glaucoma = 0;} 
+
+                var select_amd = document.querySelector('input[name="id_amd"]:checked').value;
+                var v_amd=0;
+                if (select_amd =='HTML'){v_amd = 1;}
+                else if (select_amd =='CSS') {v_amd = 0;} 
+
+                var select_dmr = document.querySelector('input[name="id_dmr"]:checked').value;
+                var v_dmr=0;
+                if (select_dmr =='HTML'){v_dmr = 1;}
+                else if (select_dmr =='CSS') {v_dmr = 0;} 
+
+                if (select_sex =='f_male'){
+                    res3 = (Number(v1)+Number(v2))*Number(v_sex)+Number(v_region)+Number(v_dm)+Number(v_htn);
+
+                    beta_x = Number(0.0743407728921026*v1)+Number(0.22559723743949*v2)+Number(-0.0404413110369403*v_region)
+                    +Number(-0.05444452782016*v_smoker)+Number(-0.14219586603997*v_alcohol)+Number(0.442270528072918*v_dm)
+                    +Number(0.387580296589121*v_htn)+Number(-0.0360081112367259*v_ptosis)+Number(0.321022493086768*v_lft)+Number(0.0416985632921846*v_pterygiun)
+                    +Number(0.149131266109529*v_cat)+Number(-0.447147990491022*v_glaucoma)+Number(0.305021024054151*v_amd)
+                    +Number(-0.624950399886532*v_dmr)
+                    -12.0221914739986;
+                    logit1 = (2.71828182845905**Number(beta_x))/(1+2.71828182845905**Number(beta_x))*100;
+
+                    SkeletalMI = Number(-0.000724775284184457*v1)+Number(-0.00427147721118205*v2)+Number(0.00444746132185944*v_region)
+                    +Number(-0.000144215493381338*v_smoker)+Number(0.000193775848605375*v_alcohol)+Number(-0.00710794075881533*v_dm)
+                    +Number(-0.00551793150264326*v_htn)+Number(-0.00176827868096008*v_ptosis)+Number(-0.000519976488693217*v_lft)
+                    +Number(0.00207039773376416*v_pterygiun)
+                    +Number(-0.000826055908232037*v_cat)+Number(-0.000850650681173301*v_glaucoma)+Number(-0.000975848616435621*v_amd)
+                    +Number(0.00151868107578218*v_dmr)
+                    +0.459828815631226;
+
+                    SarcopeniaIndex = Number(-0.00386973972802165*v1)+Number(-0.0115486982407143*v2)+Number(0.00476505191599548*v_region)
+                    +Number(-0.00143243864998319*v_smoker)+Number(0.00390892018539318*v_alcohol)+Number(-0.0220886256994219*v_dm)
+                    +Number(-0.0138471025512978*v_htn)+Number(-0.00610189230536798*v_ptosis)+Number(-0.00497199057480689*v_lft)
+                    +Number(-0.00132268660489231*v_pterygiun)
+                    +Number(-0.00325799404625795*v_cat)+Number(0.0109106969658164*v_glaucoma)+Number(-0.00825687803507717*v_amd)
+                    +Number(0.0177313648929264*v_dmr)
+                    +1.39949625218287;
+
+                    document.getElementById("res1").value = SkeletalMI;
+                    document.getElementById("res2").value = SarcopeniaIndex;
+                    document.getElementById("res3").value = logit1;
+                }
+                else if (select_sex =='f_female'){
+                    res3 = (Number(v1)+Number(v2))*Number(v_sex)+Number(v_region)+Number(v_dm)+Number(v_htn);
+
+                    beta_x = Number(0.0635923147937331*v1)+Number(0.248207600683942*v2)+Number(0.0953991601400234*v_region)
+                    +Number(0.0097136144430541*v_smoker)+Number(0.00665486378911016*v_alcohol)+Number(0.082500754352596*v_dm)
+                    +Number(0.136551503898726*v_htn)+Number(0.105496129517336*v_ptosis)+Number(0.0719256131590949*v_lft)+Number(-0.0381153111273452*v_pterygiun)
+                    +Number(0.0981037833071521*v_cat)+Number(-0.15338226150416*v_glaucoma)+Number(-0.068873571865667*v_amd)
+                    +Number(-0.264826038979051*v_dmr)
+                    -12.1295366371092;
+                    logit1 = (2.71828182845905**Number(beta_x))/(1+2.71828182845905**Number(beta_x))*100;
+
+                    SkeletalMI = Number(-0.0000751503140957464*v1)+Number(-0.00436096811113571*v2)+Number(0.00483514666205395*v_region)
+                    +Number(-0.000403453990085999*v_smoker)+Number(0.0000933058198699621*v_alcohol)+Number(-0.00134795332527865*v_dm)
+                    +Number(-0.00356570286082376*v_htn)+Number(-0.000754178071472663*v_ptosis)+Number(0.0007487002473348*v_lft)
+                    +Number(0.00322662301118413*v_pterygiun)
+                    +Number(0.000432686436791675*v_cat)+Number(0.000601468876662134*v_glaucoma)+Number(-0.00000032676*v_amd)
+                    +Number(0.00109023644171806*v_dmr)
+                    +0.351997432047233;
+
+                    SarcopeniaIndex = Number(-0.00221000194235698*v1)+Number(-0.010716050817823*v2)+Number(0.00324804437800395*v_region)
+                    +Number(0.000413484686019917*v_smoker)+Number(0.000619291231038696*v_alcohol)+Number(-0.000764338622607473*v_dm)
+                    +Number(-0.00723935075296422*v_htn)+Number(-0.00298238011228196*v_ptosis)+Number(-0.00396911100274892*v_lft)
+                    +Number(0.00497969096141872*v_pterygiun)
+                    +Number(0.000835929823698222*v_cat)+Number(0.00210419676069494*v_glaucoma)+Number(0.00403759138070895*v_amd)
+                    +Number(0.00698411723780455*v_dmr)
+                    +0.981474898924359;
+
+                    document.getElementById("res1").value = SkeletalMI;
+                    document.getElementById("res2").value = SarcopeniaIndex;
+                    document.getElementById("res3").value = logit1;
+                }
+            }
+
+            function reset(){
+                // 추가된 부분
+                document.getElementById("f_age").value = "";
+                document.getElementById("f_bmi").value = "";
+                document.getElementById("res1").value = "";
+                document.getElementById("res2").value = "";
+                document.getElementById("res3").value = "";
+            }
+
+            function getGender(event) {
+                document.getElementById('resultss').innerText = event.target.value;
+            }
+
+            function getValue1(event) {
+                document.getElementById('value1').innerText = event.target.value;
+                var value1 = document.getElementById('value1').innerText;
+                var a1=5;
+                if(value1 == "HTML"){
+                    a1 = 1;
+                }else if(value1 == "CSS"){
+                    a1 = 3;
+                }
+                document.getElementById("a1").value = a1;
+            }
+
+
+            function getSex(event) {
+                document.getElementById('id_sex').innerText = event.target.value;
+                var value_sex = document.getElementById('id_sex').innerText;
+                var a1=0;
+                if(value_sex == "f_male"){
+                    a1 = 1;
+                }else if(value_sex == "f_female"){
+                    a1 = 2;
+                }
+                document.getElementById("a01").innerText = a1;
+            }
+
+        </script>
+    </head>
+    <body>
+        <img src="./headimage.jpg";
+        style="display:block; margin: 0 auto; width:900px; height:240px;"
+        /><br>
+        <center>The page for  
+            <strong>"Oculomics for sarcopenia prediction: a machine learning approach towards predictive, preventive, and personalized medicine" </strong></center>
+        <!--<center> Authors: Bo Ram Kim, Tae Keun Yoo, Hong Kyu Kim, Ik Hee Ryu, Jin Kuk Kim, In Sik Lee, Jung Soo Kim, Dong-Hyeok Shin, Young-Sang Kim, Bom Taeck Kim</center><br>-->
+        <br>
+        
+        <center>Sex: 
+        <input type="radio" 
+        name="id_sex" 
+        value="f_male" 
+        onclick="getSex(event)">Male
+        <input type="radio" 
+        name="id_sex" 
+        value="f_female" 
+        onclick="getSex(event)" 
+        checked="checked">Female </center> 
+        
+        <center>Age: 
+        <input type="text" id="f_age"> years old</center> 
+        
+        <center>Body Mass Indes (BMI): 
+        <input type="text" id="f_bmi"> kg/m^2 </center>
+
+        <center>Region of residence:
+        <input type="radio" 
+        name="id_region" 
+        value="rural" 
+        onclick="getValue1(event)">Rural
+        <input type="radio" 
+        name="id_region" 
+        value="urban" 
+        onclick="getValue1(event)" 
+        checked="checked">Urban</center>
+        
+        <center>Current smoker:
+        <input type="radio" 
+        name="id_smoker" 
+        value="HTML" 
+        onclick="getValue1(event)">Yes
+        <input type="radio" 
+        name="id_smoker" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked">No</center>
+        
+        <center>Alcohol consumption:
+        <input type="radio" 
+        name="id_alcohol" 
+        value="HTML" 
+        onclick="getValue1(event)"> 1 drink/week or more
+        <input type="radio" 
+        name="id_alcohol" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> less than 1 drink/week</center>
+        
+        <center>Diabete mellitus (DM):
+        <input type="radio" 
+        name="id_dm" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_dm" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+        
+        <center>Hypertension (HTN):
+        <input type="radio" 
+        name="id_htn" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_htn" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+
+        <br>
+        <center>Eye examinations</center>
+        <center>Blepharoptosis:
+        <input type="radio" 
+        name="id_ptosis" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_ptosis" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+       
+        <center>Decreased levator function:
+        <input type="radio" 
+        name="id_lft" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_lft" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+     
+        <center>Pterygium:
+        <input type="radio" 
+        name="id_pterygiun" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_pterygiun" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+        
+        <center>Cataract:
+        <input type="radio" 
+        name="id_cat" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_cat" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>      
+        
+        <center>Glaucoma:
+        <input type="radio" 
+        name="id_glaucoma" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_glaucoma" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>           
+        
+        <center>Age-related macular degeneration:
+        <input type="radio" 
+        name="id_amd" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_amd" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+                  
+
+        <center>Diabetic retinopathy:
+        <input type="radio" 
+        name="id_dmr" 
+        value="HTML" 
+        onclick="getValue1(event)"> Yes
+        <input type="radio" 
+        name="id_dmr" 
+        value="CSS" 
+        onclick="getValue1(event)" 
+        checked="checked"> No </center>
+        <br>      
+        
+        <center><input type="button" value="Calculation" onclick="cal()">  <input type="button" value="Reset" onclick="reset()"></center>
+        <br>
+        <div style="border:1px solid; padding:10px;">
+            <center><strong>Results</strong></center>
+            <center>Skeletal muscle index (SMI) prediction: <input type="text" id="res1"> (A low index means less muscle mass.) </center>
+    
+            <center>Sarcopenia index (SI) prediction: <input type="text" id="res2"> (A low index means less muscle mass.)</center>
+    
+            <center>Sarcopenia (SI-based) risk prediction score (%): <input type="text" id="res3"> (A high score means more sarcopenia risk.)</center> 
+        </div>
+        <br>
+            
+        <center> Sarcopenia risk estimated by a logistic regression (sigmoid prediction) model based on the KNHANES 2010-2011</center>
+        <center>powered by VISUWORKS Inc.</center> <br>
+        <img src="./baseimage.JPG";
+        style="display:block; margin: 0 auto; width:900px; height:140px;"
+        /><br>
+    </body>
+</html>
