@@ -19,6 +19,21 @@
                                         +Number(12.877 * v_acd) + Number(8.844 * v_acw) + Number(0.009 * v_clr) 
                                         +Number(4.807 * v_aod500) + Number(4.390 * v_tisa500) + Number(0.074* v_tia750);
                 document.getElementById("res1").value = result_tia500;
+                
+                result_tia750 = 35.911 + Number(-3.702 * v_icl) + Number(-2.107 * v_pupil) + Number(-5.557 * v_ata)
+                                        +Number(12.965 * v_acd) + Number(5.530 * v_acw) + Number(0.009 * v_clr) 
+                                        +Number(11.828 * v_aod500) + Number(-18.510 * v_tisa500) + Number(0.055* v_tia750);
+                document.getElementById("res2").value = result_tia750;
+                
+                result_ssa500 = 29.162 + Number(-5.409 * v_icl) + Number(-2.801 * v_pupil) + Number(-6.995 * v_ata)
+                                        +Number(14.711 * v_acd) + Number(9.542 * v_acw) + Number(0.011 * v_clr) 
+                                        +Number(-5.206 * v_aod500) + Number(30.617 * v_tisa500) + Number(0.120* v_tia750);
+                document.getElementById("res3").value = result_ssa500;
+                
+                result_ssa750 = 33.366 + Number(-5.291 * v_icl) + Number(-2.248 * v_pupil) + Number(-4.137 * v_ata)
+                                        +Number(14.489 * v_acd) + Number(5.960 * v_acw) + Number(0.010 * v_clr) 
+                                        +Number(5.733 * v_aod500) + Number(-2.843 * v_tisa500) + Number(0.084* v_tia750);
+                document.getElementById("res4").value = result_ssa750;
             }
 
         </script>
@@ -59,15 +74,17 @@
         
         <center>TIA750 (CASIA2): 
         <input type="text" id="f_tia"> degrees (average: 53.3 degrees)</center> 
-        
+        <br> 
         <center><input type="button" value="Calculation" onclick="cal()">  <input type="button" value="Reset" onclick="reset()"></center>
+        <br> 
         
+        <center> Postoperative anterior chamber angle prediction: </center>
         <center>Postop TIA500: <input type="text" id="res1"> (degrees) </center>
         <center>Postop TIA750: <input type="text" id="res2"> (degrees) </center>
         <center>Postop SSA500: <input type="text" id="res3"> (degrees) </center>
         <center>Postop SSA750: <input type="text" id="res4"> (degrees) </center>
-        
-        <center> Postoperative anterior chamber angle prediction: </center>
+        <br> 
+
         
         <center>powered by VISUWORKS Inc.</center> <br>
         
